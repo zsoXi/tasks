@@ -1,0 +1,42 @@
+[workspace]
+members = ["core"]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+version = "0.1.0"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+sha2 = "0.10"
+rustix = { version = "1", features = ["fs"] }
+tempfile = "3"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+
+[package]
+name = "tasks"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Keep light task lists with subtasks in six groups, edit them with short JSON requests and render a safe HTML preview."
+
+[dependencies]
+tasks-core = { path = "core" }
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+rustix.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+sha2.workspace = true
+
+[lints]
+workspace = true
